@@ -1,3 +1,4 @@
+from unittest import result
 import webbrowser
 
 banner = ''' 
@@ -24,9 +25,11 @@ GREEN, RED = '\033[1;32m', '\033[91m'
 print(GREEN + banner)
 
 
+#Ask url from user 
 url = input ("URL :")
 print("")
 
+#Ask filter from user 
 print(" Filters available")
 print(" -----------------")
 print(" 1. Files containing username")
@@ -40,15 +43,18 @@ print("")
 int = input(" Choose filter: ")
 print("")
 
-# displaying Google Dork enumeration link 
-match int: 
-    case '1': 
+
+#function called Dork (Files containing username)
+def result1(url):
         print("  "+"Files containing username")
         print("  "+"-------------------------")
         print(f'site:'+(url)+' inurl:"login="')
         print("")
         webbrowser.open('http://google.com', new=1)
-    case '2': 
+
+
+#function called Dork (Files Containing passwords)
+def result2(url):
         print("  "+"Files containing passwords")
         print("  "+"--------------------------")
         print(f'site:'+(url)+' intext:"password"')
@@ -57,7 +63,10 @@ match int:
         print(f'site:'+(url)+' intext:pass.txt')
         print("")
         webbrowser.open('http://google.com', new=1)
-    case '3': 
+
+
+#function called Dork (Sensitive Directories)
+def result3(url):
         print("  "+"Sensitive Directories")
         print("  "+"---------------------")
         print(f'inurl:/database* ext:sql intext:index of -site:'+(url))
@@ -68,14 +77,20 @@ match int:
         print(f'intitle:"index of" "parent directory" "desktop.ini" site:'+(url))
         print("")
         webbrowser.open('http://google.com', new=1)
-    case '4':
+
+
+#function called Dork (Web Server Detection)
+def result4(url):
         print("  "+"web Server Detection")
         print("  "+"--------------------")
         print(f'site:ftp.'+(url)+' "Web File Manager"')
         print(f'inurl:oraweb -site:'+(url))
         print("")
         webbrowser.open('http://google.com', new=1)
-    case '5':
+
+
+#function called Dork (Files Containing Juicy Info)
+def result5(url): 
         print("  "+"Files Containing Juicy Info")
         print("  "+"---------------------------")
         print(f'"site:'+(url)+'"/""')
@@ -86,7 +101,10 @@ match int:
         print(f'intext:"private_key=" site:'+(url))
         print("")
         webbrowser.open('http://google.com', new=1)
-    case '6': 
+
+
+#function called Dork (Pages Containin Login Portals)
+def result6(url): 
         print("  "+"Pages Containing Login Portals")
         print("  "+"------------------------------")
         print(f'site:"'+(url)+'" inurl:admin/index.php')
@@ -100,7 +118,10 @@ match int:
         print(f'site:accounts.'+(url)+'/signin/')
         print("")
         webbrowser.open('http://google.com', new=1)
-    case '7': 
+
+
+#function called Dork (All dork)
+def result7(url):
         print("  "+"Files containing username")
         print("  "+"-------------------------")
         print(f'site:'+(url)+' inurl:"login="')
@@ -145,5 +166,31 @@ match int:
         print(f'intext:"private_key=" site:'+(url))
         print("")
         webbrowser.open('http://google.com', new=1)
+
+
+
+# choose filter using case/switch 
+match int: 
+    case '1': 
+       result1(url)
+
+    case '2': 
+       result2(url)
+
+    case '3': 
+       result3(url)
+
+    case '4':
+       result4(url)
+
+    case '5':
+       result5(url)
+
+    case '6': 
+       result6(url)
+
+    case '7': 
+       result7(url)
+       
 print("")
 
