@@ -1,4 +1,3 @@
-from unittest import result
 import webbrowser
 
 banner = ''' 
@@ -25,23 +24,27 @@ GREEN, RED = '\033[1;32m', '\033[91m'
 print(GREEN + banner)
 
 
-#Ask url from user 
-url = input ("URL :")
-print("")
+#function get url from user 
+def urlinput():
+        url = input ("URL :")
+        print("")
+        return url
 
-#Ask filter from user 
-print(" Filters available")
-print(" -----------------")
-print(" 1. Files containing username")
-print(" 2. Files containing passwords")
-print(" 3. Sensitive Directories")
-print(" 4. Web Server Detection")
-print(" 5. Files Containing Juicy Info")
-print(" 6. Pages Containing Login Portals")
-print(" 7. None")
-print("")
-int = input(" Choose filter: ")
-print("")
+#function get filter according to the user 
+def filter():
+        print(" Filters available")
+        print(" -----------------")
+        print(" 1. Files containing username")
+        print(" 2. Files containing passwords")
+        print(" 3. Sensitive Directories")
+        print(" 4. Web Server Detection")
+        print(" 5. Files Containing Juicy Info")
+        print(" 6. Pages Containing Login Portals")
+        print(" 7. None")
+        print("")
+        int = input(" Choose filter: ")
+        print("")
+        return int
 
 
 #function called Dork (Files containing username)
@@ -169,9 +172,11 @@ def result7(url):
 
 
 
-# choose filter using case/switch 
+# main process of the program 
+url = urlinput()
+int = filter() 
 match int: 
-    case '1': 
+    case '1':       
        result1(url)
 
     case '2': 
@@ -183,7 +188,7 @@ match int:
     case '4':
        result4(url)
 
-    case '5':
+    case '5':      
        result5(url)
 
     case '6': 
@@ -194,3 +199,14 @@ match int:
        
 print("")
 
+banner = ''' 
+
+░█─░█ ─█▀▀█ ░█▀▀█ ░█▀▀█ ░█──░█ 　 ░█─░█ ─█▀▀█ ░█▀▀█ ░█─▄▀ ▀█▀ ░█▄─░█ ░█▀▀█ 
+░█▀▀█ ░█▄▄█ ░█▄▄█ ░█▄▄█ ░█▄▄▄█ 　 ░█▀▀█ ░█▄▄█ ░█─── ░█▀▄─ ░█─ ░█░█░█ ░█─▄▄ 
+░█─░█ ░█─░█ ░█─── ░█─── ──░█── 　 ░█─░█ ░█─░█ ░█▄▄█ ░█─░█ ▄█▄ ░█──▀█ ░█▄▄█
+
+'''
+GREEN, RED = '\033[1;32m', '\033[91m'
+print(GREEN + banner)
+
+SystemExit
