@@ -10,6 +10,6 @@ bla bla ba
 
 
 ### How to use
-'''
+```
 pyhton3 GoogleDork.py
-'''
+```
