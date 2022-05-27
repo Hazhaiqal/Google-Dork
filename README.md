@@ -1,4 +1,4 @@
-# Google Dork Autoation Tool
+# Google Dork Automation Tool
 
 ### Description
 An automation tool that enumerates the url given by user by utilizing Google Dork as enumeration tool 
