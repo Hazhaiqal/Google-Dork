@@ -34,6 +34,29 @@ An automation tool that enumerates the url given by user by utilizing Google Dor
 28. site:portal.url/signin/
 29. site:social.url/signin/
 30. site:accounts.url/signin/
+31. url/wp-login.php
+32. url/wp-admin
+33. url/upgrade.php
+34. url/readme.html
+35. wp style links on index 
+36. url/administrator/
+37. url/readme.txt
+38. Joomla tag on Index 
+39. url/media/com_joomlaupdate/
+40. url/index.php/admin
+41. url/RELEASE_NOTES.txt
+42. url/js/mage/cookies.js 
+43. Magento strings on Index
+44. url/skin/frontend/default/default/css/styles.css
+45. url/design.xml 
+46. url/readme.txt
+47. Drupal tag on Index 
+48. url/core/COPYRIGHT.txt
+49. url/modules/README.txt
+50. Drupla strings on index 
+51. phpMyAdmin index page 
+52. phpMyAdmin pmahomme and pma_ style links on index page
+53. url/config.inc.php
 
 ### How to use
 ```
@@ -48,11 +71,15 @@ Filters available
  4. Web Server Detection
  5. Files Containing Juicy Info   
  6. Pages Containing Login Portals
- 7. None
+ 7. Content Management System  Scan 
+ 8. No Filter(Display All)
 
  Choose filter: <filter number>
 
  Enumeration results 
+ ..........
+ ..........
+ ..........
 ```
 ### Further Improvement 
 1. A true Command-In-Line interface by using module such as PyInquirer and Click 
