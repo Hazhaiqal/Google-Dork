@@ -149,6 +149,7 @@ def get(websiteToScan):
     }
     return requests.get(websiteToScan, allow_redirects=False, headers=user_agent)
  
+#function called CMS Scan 
 def filter7(url): 
     print("  "+"Content Management System Scan")
     print("  "+"------------------------------")
