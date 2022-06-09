@@ -60,8 +60,10 @@ An automation tool that enumerates the url given by user by utilizing Google Dor
 
 ### How to use
 ```
-python3 GoogleDorkAutomationTool.py
-URL: <url>
+python.exe GoogleDorkAutomationTool.py URL FILTER
+
+URL : URL for enumeration purposes 
+FILTER : Numbers based on the available filter
 
 Filters available
  -----------------
@@ -74,13 +76,12 @@ Filters available
  7. Content Management System  Scan 
  8. No Filter(Display All)
 
- Choose filter: <filter number>
-
+Example : python.exe Typer1.py geeksforgeeks.com
+ 
  Enumeration results 
  ..........
  ..........
  ..........
 ```
 ### Further Improvement 
-1. A true Command-In-Line interface by using module such as PyInquirer and Click 
-2. A web interactive CLI by utilizing module such as Urllib and Requests
+1. Simpler looking source code by utilizing module
