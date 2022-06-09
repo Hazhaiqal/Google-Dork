@@ -1,64 +1,14 @@
+import typer
 import requests 
 import argparse
 
-banner = ''' 
  
-░██████╗░░█████╗░░█████╗░░██████╗░██╗░░░░░███████╗  ██████╗░░█████╗░██████╗░██╗░░██╗
-██╔════╝░██╔══██╗██╔══██╗██╔════╝░██║░░░░░██╔════╝  ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝
-██║░░██╗░██║░░██║██║░░██║██║░░██╗░██║░░░░░█████╗░░  ██║░░██║██║░░██║██████╔╝█████═╝░
-██║░░╚██╗██║░░██║██║░░██║██║░░╚██╗██║░░░░░██╔══╝░░  ██║░░██║██║░░██║██╔══██╗██╔═██╗░
-╚██████╔╝╚█████╔╝╚█████╔╝╚██████╔╝███████╗███████╗  ██████╔╝╚█████╔╝██║░░██║██║░╚██╗
-░╚═════╝░░╚════╝░░╚════╝░░╚═════╝░╚══════╝╚══════╝  ╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝
-
- ░█████╗░██╗░░░██╗████████╗░█████╗░███╗░░░███╗░█████╗░████████╗██╗░█████╗░███╗░░██╗
- ██╔══██╗██║░░░██║╚══██╔══╝██╔══██╗████╗░████║██╔══██╗╚══██╔══╝██║██╔══██╗████╗░██║
- ███████║██║░░░██║░░░██║░░░██║░░██║██╔████╔██║███████║░░░██║░░░██║██║░░██║██╔██╗██║
- ██╔══██║██║░░░██║░░░██║░░░██║░░██║██║╚██╔╝██║██╔══██║░░░██║░░░██║██║░░██║██║╚████║
- ██║░░██║╚██████╔╝░░░██║░░░╚█████╔╝██║░╚═╝░██║██║░░██║░░░██║░░░██║╚█████╔╝██║░╚███║
- ╚═╝░░╚═╝░╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝
-    
-                  Made By: Muhammad Hazriq Haiqal bin Azhar  
-
-'''
-GREEN, RED = '\033[1;32m', '\033[91m'
-
-print(GREEN + banner)
- 
-
-#function get url from user 
-def urlinput():
-        url = input ("URL :")
-        print("")
-        return url
-
-#function get filter according to the user 
-def filter():
-        print(" Filters available")
-        print(" -----------------")
-        print(" 1. Files containing username")
-        print(" 2. Files containing passwords")
-        print(" 3. Sensitive Directories")
-        print(" 4. Web Server Detection")
-        print(" 5. Files Containing Juicy Info")
-        print(" 6. Pages Containing Login Portals")
-        print(" 7. Content Management System Scan")
-        print(" 8. No Filter(Display all)")
-        print("")
-        int = input(" Choose filter: ")
-        print("")
-        return int
-
-
-#function called Dork (Files containing username)
 def filter1(url):
         print("  "+"Files containing username")
         print("  "+"-------------------------")
         print(' | site:'+(url)+' inurl:"login="')
         print("")
-      
 
-
-#function called Dork (Files Containing passwords)
 def filter2(url):
         print("  "+"Files containing passwords")
         print("  "+"--------------------------")
@@ -68,7 +18,6 @@ def filter2(url):
         print(' | site:'+(url)+' intext:pass.txt')
         print("")
 
-#function called Dork (Sensitive Directories)
 def filter3(url):
         print("  "+"Sensitive Directories")
         print("  "+"---------------------")
@@ -79,19 +28,14 @@ def filter3(url):
         print(' | inurl:"folderview?id=" site:'+(url))
         print(' | intitle:"index of" "parent directory" "desktop.ini" site:'+(url))
         print("")
-        
 
-#function called Dork (Web Server Detection)
 def filter4(url):
         print("  "+"web Server Detection")
         print("  "+"--------------------")
         print(' | site:ftp.'+(url)+' "Web File Manager"')
         print(' | inurl:oraweb -site:'+(url))
         print("")
-       
 
-
-#function called Dork (Files Containing Juicy Info)
 def filter5(url): 
         print("  "+"Files Containing Juicy Info")
         print("  "+"---------------------------")
@@ -102,10 +46,7 @@ def filter5(url):
         print(' | site:'+(url)+' "*.pdf"')
         print(' | intext:"private_key=" site:'+(url))
         print("")
-       
 
-
-#function called Dork (Pages Containin Login Portals)
 def filter6(url): 
         print("  "+"Pages Containing Login Portals")
         print("  "+"------------------------------")
@@ -119,41 +60,21 @@ def filter6(url):
         print(' | site:social.'+(url)+'/signin/')
         print(' | site:accounts.'+(url)+'/signin/')
         print("")
-       
-
-
-#function called Dork (All dork)
-def filter8(url):
-        print("")
-        filter1(url)
-        print("")
-        filter2(url)
-        print("")
-        filter3(url)
-        print("")
-        filter4(url)
-        print("")
-        filter5(url)
-        print("") 
-        filter6(url)
-        print("")
-        filter7(url)
-        print("")
-        
-        
 
 def get(websiteToScan):
-    global user_agent
-    user_agent = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36',
-    }
-    return requests.get(websiteToScan, allow_redirects=False, headers=user_agent)
- 
-#function called CMS Scan 
-def filter7(url): 
+        global user_agent
+        user_agent = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36',
+        }
+        return requests.get(websiteToScan, allow_redirects=False, headers=user_agent)
+
+
+def filter7(url):
     print("  "+"Content Management System Scan")
     print("  "+"------------------------------")
     print("")
+    websiteToScan = url
+    """
     # Check to see if the site argument was specified
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--site", help="Use this option to specify the domain or IP to scan.")
@@ -162,7 +83,7 @@ def filter7(url):
         websiteToScan = url
     else:
         websiteToScan = args.site
-
+    """
     # Check the input for HTTP or HTTPS and then remove it, if nothing is found assume HTTP
     if websiteToScan.startswith('http://'):
         proto = 'http://'
@@ -214,7 +135,6 @@ def filter7(url):
 
         print
         print("[+] Attempting to get the HTTP headers...")
-        # Pretty print the headers - courtesy of Jimmy
         for header in onlineCheck.headers:
             try:
                 print (" | " + header + " : " + onlineCheck.headers[header])
@@ -418,46 +338,96 @@ def filter7(url):
         print ("Scan completed")
         print("")
 
+def filter8(url):
+        print("")
+        filter1(url)
+        print("")
+        filter2(url)
+        print("")
+        filter3(url)
+        print("")
+        filter4(url)
+        print("")
+        filter5(url)
+        print("") 
+        filter6(url)
+        print("")
+        filter7(url)
+        print("")
 
-# main process of the program 
-url = urlinput()
-int = filter() 
-match int: 
-    case '1':       
-       filter1(url)
+app = typer.Typer(help="Google Dork Automation Tool")
 
-    case '2': 
-       filter2(url)
 
-    case '3': 
-       filter3(url)
+@app.command()
 
-    case '4':
-       filter4(url)
+def urltoscan(url: str = typer.Argument( help="URL for enumeration", default=None), filter: int = typer.Argument(help="Filter number: 1...8", default=None)):
+    
+    """ 
+     Example : python.exe Typer1.py geeksforgeeks.com 3\n
+     Filter Available: \n 
+     1.  Files containing username\n
+     2.  Files containing passwords\n 
+     3.  Sensitive Directories\n 
+     4.  Web Server Detection\n 
+     5.  Files Containing Juicy Info\n 
+     6.  Pages Containing Login Portals\n 
+     7.  Content Management System Scan\n 
+     8.  No Filter(Display all)\n 
 
-    case '5':      
-       filter5(url)
+    """
+    
+    print("")
+    print(f"Enumerated URL:  {url}")
+    print("")
+    match filter:
+        case 1:       
+            filter1(url)
 
-    case '6': 
-       filter6(url)
+        case 2: 
+            filter2(url)
 
-    case '7': 
-       filter7(url)
+        case 3: 
+            filter3(url)
 
-    case '8':
-       filter8(url)
-      
-       
-print("")
+        case 4:
+            filter4(url)
 
-banner = ''' 
+        case 5:      
+            filter5(url)
 
-░█─░█ ─█▀▀█ ░█▀▀█ ░█▀▀█ ░█──░█ 　 ░█─░█ ─█▀▀█ ░█▀▀█ ░█─▄▀ ▀█▀ ░█▄─░█ ░█▀▀█ 
-░█▀▀█ ░█▄▄█ ░█▄▄█ ░█▄▄█ ░█▄▄▄█ 　 ░█▀▀█ ░█▄▄█ ░█─── ░█▀▄─ ░█─ ░█░█░█ ░█─▄▄ 
-░█─░█ ░█─░█ ░█─── ░█─── ──░█── 　 ░█─░█ ░█─░█ ░█▄▄█ ░█─░█ ▄█▄ ░█──▀█ ░█▄▄█
+        case 6: 
+            filter6(url)
 
-'''
-GREEN, RED = '\033[1;32m', '\033[91m'
-print(GREEN + banner)
+        case 7: 
+            filter7(url)
 
-SystemExit
+        case 8:
+            filter8(url)
+    
+
+
+if __name__ == "__main__":
+    
+    banner = ''' 
+ 
+░██████╗░░█████╗░░█████╗░░██████╗░██╗░░░░░███████╗  ██████╗░░█████╗░██████╗░██╗░░██╗
+██╔════╝░██╔══██╗██╔══██╗██╔════╝░██║░░░░░██╔════╝  ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝
+██║░░██╗░██║░░██║██║░░██║██║░░██╗░██║░░░░░█████╗░░  ██║░░██║██║░░██║██████╔╝█████═╝░
+██║░░╚██╗██║░░██║██║░░██║██║░░╚██╗██║░░░░░██╔══╝░░  ██║░░██║██║░░██║██╔══██╗██╔═██╗░
+╚██████╔╝╚█████╔╝╚█████╔╝╚██████╔╝███████╗███████╗  ██████╔╝╚█████╔╝██║░░██║██║░╚██╗
+░╚═════╝░░╚════╝░░╚════╝░░╚═════╝░╚══════╝╚══════╝  ╚═════╝░░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝
+
+ ░█████╗░██╗░░░██╗████████╗░█████╗░███╗░░░███╗░█████╗░████████╗██╗░█████╗░███╗░░██╗
+ ██╔══██╗██║░░░██║╚══██╔══╝██╔══██╗████╗░████║██╔══██╗╚══██╔══╝██║██╔══██╗████╗░██║
+ ███████║██║░░░██║░░░██║░░░██║░░██║██╔████╔██║███████║░░░██║░░░██║██║░░██║██╔██╗██║
+ ██╔══██║██║░░░██║░░░██║░░░██║░░██║██║╚██╔╝██║██╔══██║░░░██║░░░██║██║░░██║██║╚████║
+ ██║░░██║╚██████╔╝░░░██║░░░╚█████╔╝██║░╚═╝░██║██║░░██║░░░██║░░░██║╚█████╔╝██║░╚███║
+ ╚═╝░░╚═╝░╚═════╝░░░░╚═╝░░░░╚════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝
+    
+                    Made By: Muhammad Hazriq Haiqal bin Azhar  
+
+            '''
+    GREEN, RED = '\033[1;32m', '\033[91m'
+
+    print(GREEN + banner)
+    app()
