@@ -1,0 +1,10 @@
+def filter5(url): 
+        print("  "+"Files Containing Juicy Info")
+        print("  "+"---------------------------")
+        print(' | "site:'+(url)+'"/""')
+        print(' | intext:"password" | "passwd" | "pwd" site:'+(url))
+        print(' | allintext:'+(url)+' filetype:log')
+        print(' | intext:"SECRET_KEY=" site:'+(url))
+        print(' | site:'+(url)+' "*.pdf"')
+        print(' | intext:"private_key=" site:'+(url))
+        print("")
