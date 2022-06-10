@@ -3,7 +3,7 @@
 ### Description
 An automation tool that enumerates the url given by user by utilizing Google Dork as enumeration tool 
 
-### Availble Dorks supported
+### Available Dorks supported
 1.  site:url inurl:"login=" 
 2.  site:url intext:"password"
 3.  site:url "admin password
@@ -84,4 +84,4 @@ Example : python.exe Typer1.py geeksforgeeks.com
  ..........
 ```
 ### Further Improvement 
-1. Simpler looking source code by utilizing module
+1. Add more CMS Google Dork scan from GHDB
