@@ -12,16 +12,7 @@ def filter7(url):
     print("  "+"------------------------------")
     print("")
     websiteToScan = url
-    """
-    # Check to see if the site argument was specified
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--site", help="Use this option to specify the domain or IP to scan.")
-    args = parser.parse_args()
-    if args.site is None:
-        websiteToScan = url
-    else:
-        websiteToScan = args.site
-    """
+
     # Check the input for HTTP or HTTPS and then remove it, if nothing is found assume HTTP
     if websiteToScan.startswith('http://'):
         proto = 'http://'
