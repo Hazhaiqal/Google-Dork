@@ -86,6 +86,24 @@ def filter7(url):
         else:
             print (" |  Not Detected: WordPress WP-Login page: " + websiteToScan + '/wp-login.php')
 
+        wpLoginCheck = requests.get(websiteToScan + '/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php', headers=user_agent)
+        if wpLoginCheck.status_code == 200 and "404" not in wpLoginCheck.text:
+            print ("[!] Detected: WordPress file manager " + websiteToScan + '/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php')
+        else:
+            print (" |  Not Detected: WordPress file manager: " + websiteToScan + '/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php')
+        
+        wpLoginCheck = requests.get(websiteToScan + '/cms/app/webroot', headers=user_agent)
+        if wpLoginCheck.status_code == 200 and "webroot" in wpLoginCheck.text and "404" not in wpLoginCheck.text:
+            print ("[!] Detected: WordPress WP-Webroot: " + websiteToScan + '/cms/app/webroot')
+        else:
+            print (" |  Not Detected: WordPress WP-Webroot: " + websiteToScan + '/cms/app/webroot')
+        
+        wpLoginCheck = requests.get(websiteToScan + '/login.jsp', headers=user_agent)
+        if wpLoginCheck.status_code == 200 and "404" not in wpLoginCheck.text:
+            print ("[!] Detected: WordPress WP-Login page: " + websiteToScan + '/login.jsp')
+        else:
+            print (" |  Not Detected: WordPress WP-Login page: " + websiteToScan + '/login.jsp')
+        
         # Use requests.get allowing redirects otherwise will always fail
         wpAdminCheck = requests.get(websiteToScan + '/wp-admin', headers=user_agent)
         if wpAdminCheck.status_code == 200 and "user_login" in wpAdminCheck.text and "404" not in wpLoginCheck.text:
@@ -263,6 +281,24 @@ def filter7(url):
         else:
             print (" |  Not Detected: phpMyAdmin configuration file: " + websiteToScan + '/config.inc.php')
 
+        phpMyAdminConfigCheck = get(websiteToScan + '/phpmyadmin/server_databases.php')
+        if phpMyAdminConfigCheck.status_code == 200 and '404' not in phpMyAdminConfigCheck.text:
+            print ("[!] Detected: phpMyAdmin server database: " + websiteToScan + '/phpmyadmin/server_databases.php')
+        else:
+            print (" |  Not Detected: phpMyAdmin server database: " + websiteToScan + '/phpmyadmin/server_databases.php')
+
+        phpMyAdminConfigCheck = get(websiteToScan + '/phpmyadmin/user_password.php')
+        if phpMyAdminConfigCheck.status_code == 200 and '404' not in phpMyAdminConfigCheck.text:
+            print ("[!] Detected: phpMyAdmin user password: " + websiteToScan + '/phpmyadmin/user_password.php')
+        else:
+            print (" |  Not Detected: phpMyAdmin user password: " + websiteToScan + '/phpmyadmin/user_password.php')
+        
+        phpMyAdminConfigCheck = get(websiteToScan + '/phpmyadmin/changelog.php')
+        if phpMyAdminConfigCheck.status_code == 200 and '404' not in phpMyAdminConfigCheck.text:
+            print ("[!] Detected: phpMyAdmin changelog: " + websiteToScan + '/phpmyadmin/changelog.php')
+        else:
+            print (" |  Not Detected: phpMyAdmin changelog: " + websiteToScan + '/phpmyadmin/changelog.php')
+        
         print("")
         print ("Scan completed")
         print("")
