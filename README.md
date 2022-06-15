@@ -57,6 +57,12 @@ An automation tool that enumerates the url given by user by utilizing Google Dor
 51. phpMyAdmin index page 
 52. phpMyAdmin pmahomme and pma_ style links on index page
 53. url/config.inc.php
+54. url/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php
+55. url/cms/app/webroot 
+56. url/login.jsp 
+57. url/phpmyadmin/server_databases.php
+58. url/phpmyadmin/user_password.php 
+59. url/phpmyadmin/changelog.php
 
 ### How to use
 ```
@@ -117,7 +123,7 @@ Options:
 
 python.exe GoogleDorkAutomationTool.py facebook.com 8 
 
- 
+
 ░██████╗░░█████╗░░█████╗░░██████╗░██╗░░░░░███████╗  ██████╗░░█████╗░██████╗░██╗░░██╗
 ██╔════╝░██╔══██╗██╔══██╗██╔════╝░██║░░░░░██╔════╝  ██╔══██╗██╔══██╗██╔══██╗██║░██╔╝
 ██║░░██╗░██║░░██║██║░░██║██║░░██╗░██║░░░░░█████╗░░  ██║░░██║██║░░██║██████╔╝█████═╝░
@@ -136,114 +142,120 @@ python.exe GoogleDorkAutomationTool.py facebook.com 8
 
 
 
-Enumerated URL:  facebook.com
+Enumerated URL:  geeksforgeeks.com
 
 
   Files containing username
   -------------------------
- | site:facebook.com inurl:"login="
+ | site:geeksforgeeks.com inurl:"login="
 
 
   Files containing passwords
   --------------------------
- | site:facebook.com intext:"password"
- | site:facebook.com "password"
- | site:facebook.com "admin password"
- | site:facebook.com intext:pass.txt
+ | site:geeksforgeeks.com intext:"password"
+ | site:geeksforgeeks.com "password"
+ | site:geeksforgeeks.com "admin password"
+ | site:geeksforgeeks.com intext:pass.txt
 
 
   Sensitive Directories
   ---------------------
- | inurl:/database* ext:sql intext:index of -site:facebook.com
- | inurl:"/drive/folders/" site:facebook.com
- | site:facebook.com shared by
- | intitle:index.of ios -site:facebook.com
- | inurl:"folderview?id=" site:facebook.com
- | intitle:"index of" "parent directory" "desktop.ini" site:facebook.com
+ | inurl:/database* ext:sql intext:index of -site:geeksforgeeks.com
+ | inurl:"/drive/folders/" site:geeksforgeeks.com
+ | site:geeksforgeeks.com shared by
+ | intitle:index.of ios -site:geeksforgeeks.com
+ | inurl:"folderview?id=" site:geeksforgeeks.com
+ | intitle:"index of" "parent directory" "desktop.ini" site:geeksforgeeks.com
 
 
   web Server Detection
   --------------------
- | site:ftp.facebook.com "Web File Manager"
- | inurl:oraweb -site:facebook.com
+ | site:ftp.geeksforgeeks.com "Web File Manager"
+ | inurl:oraweb -site:geeksforgeeks.com
 
 
   Files Containing Juicy Info
   ---------------------------
- | "site:facebook.com"/""
- | intext:"password" | "passwd" | "pwd" site:facebook.com
- | allintext:facebook.com filetype:log
- | intext:"SECRET_KEY=" site:facebook.com
- | site:facebook.com "*.pdf"
- | intext:"private_key=" site:facebook.com
+ | "site:geeksforgeeks.com"/""
+ | intext:"password" | "passwd" | "pwd" site:geeksforgeeks.com
+ | allintext:geeksforgeeks.com filetype:log
+ | intext:"SECRET_KEY=" site:geeksforgeeks.com
+ | site:geeksforgeeks.com "*.pdf"
+ | intext:"private_key=" site:geeksforgeeks.com
 
 
   Pages Containing Login Portals
   ------------------------------
- | site:"facebook.com" inurl:admin/index.php
- | inurl:("admin/password.php") +site:facebook.com
- | site:facebook.com inurl:("administrator/login.php" OR "admin/login.php")
- | site:conf.facebook.com/signin/
- | site:login.facebook.com/signin/
- | site:admin.facebook.com/signin/
- | site:portal.facebook.com/signin/
- | site:social.facebook.com/signin/
- | site:accounts.facebook.com/signin/
+ | site:"geeksforgeeks.com" inurl:admin/index.php
+ | inurl:("admin/password.php") +site:geeksforgeeks.com
+ | site:geeksforgeeks.com inurl:("administrator/login.php" OR "admin/login.php")
+ | site:conf.geeksforgeeks.com/signin/
+ | site:login.geeksforgeeks.com/signin/
+ | site:admin.geeksforgeeks.com/signin/
+ | site:portal.geeksforgeeks.com/signin/
+ | site:social.geeksforgeeks.com/signin/
+ | site:accounts.geeksforgeeks.com/signin/
 
 
   Content Management System Scan
   ------------------------------
 
 [+] Checking to see if the site is online...
- |  http://facebook.com appears to be online.
+ |  http://geeksforgeeks.com appears to be online.
 Beginning scan...
 [+] Checking to see if the site is redirecting...
-[!] The site entered appears to be redirecting, please verify the destination site to ensure accurate results!
-[!] It appears the site is redirecting to https://www.facebook.com/
+ | Site does not appear to be redirecting...
 [+] Attempting to get the HTTP headers...
- | Location : https://facebook.com/
- | Content-Type : text/html; charset="utf-8"
- | X-FB-Debug : GGTrpNvW4FjeX11T3ATQHI0yHMJUN5kx7/qxRgnxE5RJA6Wtwr2VZKnxSIMV+40u8QhjAHNAs0XJ9Hv0uADIGw==
- | Date : Mon, 13 Jun 2022 06:55:32 GMT
- | Alt-Svc : h3=":443"; ma=86400, h3-29=":443"; ma=86400
+ | Server : openresty
+ | Date : Wed, 15 Jun 2022 01:19:49 GMT
+ | Content-Type : text/html; charset=UTF-8
+ | Transfer-Encoding : chunked
  | Connection : keep-alive
- | Content-Length : 0
+ | Set-Cookie : parking_session=f1f413fd-7bbf-5241-f47e-7b85489113f8; expires=Wed, 15-Jun-2022 01:34:49 GMT; Max-Age=900; path=/; HttpOnly
+ | X-Adblock-Key : MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANDrp2lz7AOmADaN8tA50LsWcjLFyQFcb/P2Txc58oYOeILb3vBw7J6f4pamkAQVSQuqYsKx3YzdUHCvbVZvFUsCAwEAAQ==_WKpgsLEiP5FxqyCFQuaC8x59QyFceKQq/M70T7k/umXTRhKtTuiiDDQQ91Yx7K/K8ijq5y3Of+RFFepNJ6CsGA==
+ | Cache-Control : no-cache, no-store, must-revalidate, post-check=0, pre-check=0
+ | Expires : Thu, 01 Jan 1970 00:00:01 GMT
+ | Pragma : no-cache
+ | Content-Encoding : gzip
 
 [+] Running the WordPress scans...
     ------------------------------
 
- |  Not Detected: WordPress WP-Login page: http://facebook.com/wp-login.php
- |  Not Detected: WordPress WP-Admin page: http://facebook.com/wp-admin
- |  Not Detected: WordPress WP-Admin/upgrade.php page: http://facebook.com/wp-admin/upgrade.php
- |  Not Detected: WordPress Readme.html: http://facebook.com/readme.html
+ |  Not Detected: WordPress WP-Login page: http://geeksforgeeks.com/wp-login.php
+[!] Detected: WordPress file manager http://geeksforgeeks.com/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php
+ |  Not Detected: WordPress WP-Webroot: http://geeksforgeeks.com/cms/app/webroot
+[!] Detected: WordPress WP-Login page: http://geeksforgeeks.com/login.jsp
+ |  Not Detected: WordPress WP-Admin page: http://geeksforgeeks.com/wp-admin
+[!] Detected: WordPress WP-Admin/upgrade.php page: http://geeksforgeeks.com/wp-admin/upgrade.php
+[!] Detected: WordPress Readme.html: http://geeksforgeeks.com/readme.html
  |  Not Detected: WordPress wp- style links detected on index
 
 [+] Running the Joomla scans...
     ---------------------------
 
- |  Not Detected: Joomla administrator login page: http://facebook.com/administrator/
- |  Not Detected: Joomla Readme.txt: http://facebook.com/readme.txt
+ |  Not Detected: Joomla administrator login page: http://geeksforgeeks.com/administrator/
+ |  Not Detected: Joomla Readme.txt: http://geeksforgeeks.com/readme.txt
  |  Not Detected: Generated by Joomla tag on index
  |  Not Detected: Joomla strings on index
- |  Not Detected: Joomla media/com_joomlaupdate directories: http://facebook.com/media/com_joomlaupdate/
+ |  Not Detected: Joomla media/com_joomlaupdate directories: http://geeksforgeeks.com/media/com_joomlaupdate/
 
 [+] Running the Magento scans...
     ----------------------------
 
- |  Not Detected: Magento administrator login page: http://facebook.com/index.php/admin
- |  Not Detected: Magento Release_Notes.txt: http://facebook.com/RELEASE_NOTES.txt
- |  Not Detected: Magento cookies.js: http://facebook.com/js/mage/cookies.js
+ |  Not Detected: Magento administrator login page: http://geeksforgeeks.com/index.php/admin
+ |  Not Detected: Magento Release_Notes.txt: http://geeksforgeeks.com/RELEASE_NOTES.txt
+[!] Detected: Magento cookies.js: http://geeksforgeeks.com/js/mage/cookies.js
  |  Not Detected: Magento strings on index
- |  Not Detected: Magento styles.css: http://facebook.com/skin/frontend/default/default/css/styles.css
- |  Not Detected: Magento error page design.xml: http://facebook.com/errors/design.xml
+[!] Detected: Magento styles.css: http://geeksforgeeks.com/skin/frontend/default/default/css/styles.css
+ |  Not Detected: Magento error page design.xml: http://geeksforgeeks.com/errors/design.xml
 
 [+] Running the Drupal scans...
     ---------------------------
 
- |  Not Detected: Drupal Readme.txt: http://facebook.com/readme.txt
+ |  Not Detected: Drupal Readme.txt: http://geeksforgeeks.com/readme.txt
  |  Not Detected: Generated by Drupal tag on index
- |  Not Detected: Drupal COPYRIGHT.txt: http://facebook.com/core/COPYRIGHT.txt
- |  Not Detected: Drupal modules/README.txt: http://facebook.com/modules/README.txt
+ |  Not Detected: Drupal COPYRIGHT.txt: http://geeksforgeeks.com/core/COPYRIGHT.txt
+ |  Not Detected: Drupal modules/README.txt: http://geeksforgeeks.com/modules/README.txt
  |  Not Detected: Drupal strings on index
 
 [+] Running the phpMyAdmin scans...
@@ -251,7 +263,10 @@ Beginning scan...
 
  |  Not Detected: phpMyAdmin index page
  |  Not Detected: phpMyAdmin pmahomme and pma_ style links on index page
- |  Not Detected: phpMyAdmin configuration file: http://facebook.com/config.inc.php
+[!] Detected: phpMyAdmin configuration file: http://geeksforgeeks.com/config.inc.php
+[!] Detected: phpMyAdmin server database: http://geeksforgeeks.com/phpmyadmin/server_databases.php
+[!] Detected: phpMyAdmin user password: http://geeksforgeeks.com/phpmyadmin/user_password.php
+[!] Detected: phpMyAdmin changelog: http://geeksforgeeks.com/phpmyadmin/changelog.php
 
 Scan completed
 ```
