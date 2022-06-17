@@ -1,6 +1,12 @@
+import typer 
+import time
 def filter5(url): 
         print("  "+"Files Containing Juicy Info")
         print("  "+"---------------------------")
+        with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
+                for value in progress:
+                    time.sleep(0.04)
+                print("")
         print(' | "site:'+(url)+'"/""')
         print(' | intext:"password" | "passwd" | "pwd" site:'+(url))
         print(' | allintext:'+(url)+' filetype:log')
