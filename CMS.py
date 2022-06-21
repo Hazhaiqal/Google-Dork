@@ -1,6 +1,13 @@
 import requests
-def filter7(url):
+from rich.progress import track
+import progressbar 
+import progressbar
+from progressbar import ProgressBar
 
+def filter7(url):
+    pbar = progressbar.ProgressBar()
+    pbar = ProgressBar().start()
+    total_steps = 5
     def get(websiteToScan):
         global user_agent
         user_agent = {
@@ -128,7 +135,8 @@ def filter7(url):
             print ("[!] Detected: WordPress wp- style links detected on index")
         else:
             print (" |  Not Detected: WordPress wp- style links detected on index")
-
+        pbar.update((1/5)*100)
+        print("")
         ####################################################
         # Joomla Scans
         ####################################################
@@ -167,6 +175,8 @@ def filter7(url):
             print ("[!] Detected: Joomla media/com_joomlaupdate directories: " + websiteToScan + '/media/com_joomlaupdate/')
         else:
             print (" |  Not Detected: Joomla media/com_joomlaupdate directories: " + websiteToScan + '/media/com_joomlaupdate/')
+        pbar.update((2/5)*100)
+        print("")
 
         ####################################################
         # Magento Scans
@@ -214,6 +224,8 @@ def filter7(url):
             print ("[!] Detected: Magento error page design.xml: " + websiteToScan + '/errors/design.xml')
         else:
             print (" |  Not Detected: Magento error page design.xml: " + websiteToScan + '/errors/design.xml')
+        pbar.update((3/5)*100)
+        print("")
 
         ####################################################
         # Drupal Scans
@@ -253,6 +265,8 @@ def filter7(url):
             print ("[!] Detected: Drupal strings on index")
         else:
             print (" |  Not Detected: Drupal strings on index")
+        pbar.update((4/5)*100)
+        print("")
 
         ####################################################
         # phpMyAdmin Scans
@@ -298,7 +312,7 @@ def filter7(url):
             print ("[!] Detected: phpMyAdmin changelog: " + websiteToScan + '/phpmyadmin/changelog.php')
         else:
             print (" |  Not Detected: phpMyAdmin changelog: " + websiteToScan + '/phpmyadmin/changelog.php')
-        
+        pbar.update((5/5)*100)
         print("")
         print ("Scan completed")
         print("")
