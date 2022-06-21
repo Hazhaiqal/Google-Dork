@@ -9,3 +9,4 @@ def filter1(url):
                 print("")
         print(' | site:'+(url)+' inurl:"login="')
         print("")
+        
