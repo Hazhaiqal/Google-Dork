@@ -6,24 +6,8 @@ import sens_dir
 import server_detect
 import files_info
 import login_portals
+import no_filter
 
-
-def filter8(url):
-        print("")
-        username.filter1(url)
-        print("")
-        password.filter2(url)
-        print("")
-        sens_dir.filter3(url)
-        print("")
-        server_detect.filter4(url)
-        print("")
-        files_info.filter5(url)
-        print("") 
-        login_portals.filter6(url)
-        print("")
-        CMS.filter7(url)
-        print("")
 
 app = typer.Typer(help="Google Dork Automation Tool")
 
@@ -72,7 +56,7 @@ def urltoscan(url: str = typer.Argument( help="URL for enumeration", default=Non
             CMS.filter7(url)
 
         case 8:
-            filter8(url)
+            no_filter.filter8(url)
     
 
 
