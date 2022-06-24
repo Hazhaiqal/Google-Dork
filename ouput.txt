@@ -1,0 +1,30 @@
+-------------------------
+-- Summary on CMS scan --
+-------------------------
+Wordpress CMS used   :  4
+----------------------------
+http://geeksforgeeks.com/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php 
+http://geeksforgeeks.com/login.jsp 
+http://geeksforgeeks.com/wp-admin/upgrade.php 
+http://geeksforgeeks.com/readme.html
+
+Joomla CMS used      :  0
+----------------------------
+
+
+Magento CMS used     :  2
+----------------------------
+http://geeksforgeeks.com/js/mage/cookies.js 
+http://geeksforgeeks.com/skin/frontend/default/default/css/styles.css
+
+Drupal CMS used      :  0
+----------------------------
+
+
+phpMyAdmin CMS used  :  4
+----------------------------
+http://geeksforgeeks.com/config.inc.php 
+http://geeksforgeeks.com/phpmyadmin/server_databases.php 
+http://geeksforgeeks.com/phpmyadmin/user_password.php 
+http://geeksforgeeks.com/phpmyadmin/changelog.php
+

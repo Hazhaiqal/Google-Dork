@@ -1,11 +1,84 @@
+from typing import Counter
 import requests
-from rich.progress import track
 import progressbar 
 import progressbar
 from progressbar import ProgressBar
 import sys
+import typer 
+import time
 
-def filter7(url):
+def filter8(url):
+    print("  "+"Files containing username")
+    print("  "+"-------------------------")
+    with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
+            for value in progress:
+                time.sleep(0.01)
+            print("")
+    print(' | site:'+(url)+' inurl:"login="')
+    print("")
+    print("  "+"Files containing passwords")
+    print("  "+"--------------------------")
+    with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
+            for value in progress:
+                time.sleep(0.02)
+            print("")
+    print(' | site:'+(url)+' intext:"password"')
+    print(' | site:'+(url)+' "password"')
+    print(' | site:'+(url)+' "admin password"')
+    print(' | site:'+(url)+' intext:pass.txt')
+    print("")
+    print("  "+"Sensitive Directories")
+    print("  "+"---------------------")
+    with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
+            for value in progress:
+                time.sleep(0.03)
+            print("")
+    print(' | inurl:/database* ext:sql intext:index of -site:'+(url))
+    print(' | inurl:"/drive/folders/" site:'+(url))
+    print(' | site:'+(url)+' shared by')
+    print(' | intitle:index.of ios -site:'+(url))
+    print(' | inurl:"folderview?id=" site:'+(url))
+    print(' | intitle:"index of" "parent directory" "desktop.ini" site:'+(url))
+    print("")
+    print("  "+"web Server Detection")
+    print("  "+"--------------------")
+    with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
+            for value in progress:
+                time.sleep(0.02)
+            print("")
+    print(' | site:ftp.'+(url)+' "Web File Manager"')
+    print(' | inurl:oraweb -site:'+(url))
+    print("")
+    print("  "+"Files Containing Juicy Info")
+    print("  "+"---------------------------")
+    with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
+            for value in progress:
+                time.sleep(0.04)
+            print("")
+    print(' | "site:'+(url)+'"/""')
+    print(' | intext:"password" | "passwd" | "pwd" site:'+(url))
+    print(' | allintext:'+(url)+' filetype:log')
+    print(' | intext:"SECRET_KEY=" site:'+(url))
+    print(' | site:'+(url)+' "*.pdf"')
+    print(' | intext:"private_key=" site:'+(url))
+    print("")
+    print("  "+"Pages Containing Login Portals")
+    print("  "+"------------------------------")
+    with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
+            for value in progress:
+                time.sleep(0.05)
+            print("")
+    print(' | site:"'+(url)+'" inurl:admin/index.php')
+    print(' | inurl:("admin/password.php") +site:'+(url))
+    print(' | site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")')
+    print(' | site:conf.'+(url)+'/signin/')
+    print(' | site:login.'+(url)+'/signin/')
+    print(' | site:admin.'+(url)+'/signin/')
+    print(' | site:portal.'+(url)+'/signin/')
+    print(' | site:social.'+(url)+'/signin/')
+    print(' | site:accounts.'+(url)+'/signin/')
+    print("")
+
     wp_counter = 0
     wp = []
     jm_counter = 0
@@ -30,7 +103,6 @@ def filter7(url):
     print("  "+"------------------------------")
     print("")
     websiteToScan = url
-
     # Check the input for HTTP or HTTPS and then remove it, if nothing is found assume HTTP
     if websiteToScan.startswith('http://'):
         proto = 'http://'
@@ -87,7 +159,7 @@ def filter7(url):
                 print (" | " + header + " : " + onlineCheck.headers[header])
             except Exception as ex:
                 print ("[!] Error: " + ex.message)
-
+        
         ####################################################
         # WordPress Scans
         ####################################################
@@ -96,7 +168,7 @@ def filter7(url):
         print ("[+] Running the WordPress scans...")
         print ("    ------------------------------")
         print("")
-        Counter_Wordpress = 0
+        Counter_Wordpress = 0    
         # Use requests.get allowing redirects otherwise will always fail
         wpLoginCheck = requests.get(websiteToScan + '/wp-login.php', headers=user_agent)
         if wpLoginCheck.status_code == 200 and "user_login" in wpLoginCheck.text and "404" not in wpLoginCheck.text:
@@ -115,7 +187,7 @@ def filter7(url):
             wp.append(websiteToScan + '/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php')
         else:
             print (" |  Not Detected: WordPress file manager: " + websiteToScan + '/wp-content/plugins/wp-file-manager/lib/php/connector.minimal.php')
-        
+
         wpLoginCheck = requests.get(websiteToScan + '/cms/app/webroot', headers=user_agent)
         if wpLoginCheck.status_code == 200 and "webroot" in wpLoginCheck.text and "404" not in wpLoginCheck.text:
             print ("[!] Detected: WordPress WP-Webroot: " + websiteToScan + '/cms/app/webroot')
@@ -124,7 +196,7 @@ def filter7(url):
             wp.append(websiteToScan + '/cms/app/webroot')
         else:
             print (" |  Not Detected: WordPress WP-Webroot: " + websiteToScan + '/cms/app/webroot')
-        
+
         wpLoginCheck = requests.get(websiteToScan + '/login.jsp', headers=user_agent)
         if wpLoginCheck.status_code == 200 and "404" not in wpLoginCheck.text:
             print ("[!] Detected: WordPress WP-Login page: " + websiteToScan + '/login.jsp')
@@ -133,7 +205,7 @@ def filter7(url):
             wp.append(websiteToScan + '/login.jsp')
         else:
             print (" |  Not Detected: WordPress WP-Login page: " + websiteToScan + '/login.jsp')
-        
+
         # Use requests.get allowing redirects otherwise will always fail
         wpAdminCheck = requests.get(websiteToScan + '/wp-admin', headers=user_agent)
         if wpAdminCheck.status_code == 200 and "user_login" in wpAdminCheck.text and "404" not in wpLoginCheck.text:
@@ -172,10 +244,11 @@ def filter7(url):
             print (" |  Not Detected: WordPress wp- style links detected on index")
         pbar.update((1/5)*100)
         print("")
-        ####################################################
+
+         ####################################################
         # Joomla Scans
         ####################################################
-
+         
         print("")
         print ("[+] Running the Joomla scans...")
         print ("    ---------------------------")
@@ -303,7 +376,7 @@ def filter7(url):
         print ("[+] Running the Drupal scans...")
         print ("    ---------------------------")
         print("")
-        Counter_Drupal = 0
+        Counter_Drupal = 0 
         drupalReadMeCheck = get(websiteToScan + '/readme.txt')
         if drupalReadMeCheck.status_code == 200 and 'drupal' in drupalReadMeCheck.text and '404' not in drupalReadMeCheck.text:
             print ("[!] Detected: Drupal Readme.txt: " + websiteToScan + '/readme.txt')
@@ -330,7 +403,7 @@ def filter7(url):
             dp.append(" "+websiteToScan + '/core/COPYRIGHT.txt')
         else:
             print (" |  Not Detected: Drupal COPYRIGHT.txt: " + websiteToScan + '/core/COPYRIGHT.txt')
-
+        
         drupalReadme2Check = get(websiteToScan + '/modules/README.txt')
         if drupalReadme2Check.status_code == 200 and 'drupal' in drupalReadme2Check.text and '404' not in drupalReadme2Check.text:
             print ("[!] Detected: Drupal modules/README.txt: " + websiteToScan + '/modules/README.txt')
@@ -404,7 +477,7 @@ def filter7(url):
             php.append(websiteToScan+'/phpmyadmin/user_password.php')
         else:
             print (" |  Not Detected: phpMyAdmin user password: " + websiteToScan + '/phpmyadmin/user_password.php')
-        
+
         phpMyAdminConfigCheck = get(websiteToScan + '/phpmyadmin/changelog.php')
         if phpMyAdminConfigCheck.status_code == 200 and '404' not in phpMyAdminConfigCheck.text:
             print ("[!] Detected: phpMyAdmin changelog: " + websiteToScan + '/phpmyadmin/changelog.php')
@@ -415,7 +488,6 @@ def filter7(url):
             print (" |  Not Detected: phpMyAdmin changelog: " + websiteToScan + '/phpmyadmin/changelog.php')
         pbar.update((5/5)*100)
 
-        #Summary of the CMS scan
         print("")
         print ("Scan completed")
         print("")
@@ -446,10 +518,55 @@ def filter7(url):
         print("----------------------------")
         print(*php, sep=' \n')
         print("")
-
-        #ouput the summary to ouput.txt
         FilePath = 'ouput.txt'
         sys.stdout = open(FilePath, 'w')
+        print("  "+"Files containing username")
+        print("  "+"-------------------------")
+        print(' | site:'+(url)+' inurl:"login="')
+        print("")
+        print("  "+"Files containing passwords")
+        print("  "+"--------------------------")
+        print(' | site:'+(url)+' intext:"password"')
+        print(' | site:'+(url)+' "password"')
+        print(' | site:'+(url)+' "admin password"')
+        print(' | site:'+(url)+' intext:pass.txt')
+        print("")
+        print("  "+"Sensitive Directories")
+        print("  "+"---------------------")
+        print(' | inurl:/database* ext:sql intext:index of -site:'+(url))
+        print(' | inurl:"/drive/folders/" site:'+(url))
+        print(' | site:'+(url)+' shared by')
+        print(' | intitle:index.of ios -site:'+(url))
+        print(' | inurl:"folderview?id=" site:'+(url))
+        print(' | intitle:"index of" "parent directory" "desktop.ini" site:'+(url))
+        print("")
+        print("  "+"web Server Detection")
+        print("  "+"--------------------")
+        print(' | site:ftp.'+(url)+' "Web File Manager"')
+        print(' | inurl:oraweb -site:'+(url))
+        print("")
+        print("  "+"Files Containing Juicy Info")
+        print("  "+"---------------------------")
+        print(' | "site:'+(url)+'"/""')
+        print(' | intext:"password" | "passwd" | "pwd" site:'+(url))
+        print(' | allintext:'+(url)+' filetype:log')
+        print(' | intext:"SECRET_KEY=" site:'+(url))
+        print(' | site:'+(url)+' "*.pdf"')
+        print(' | intext:"private_key=" site:'+(url))
+        print("")
+        print("  "+"Pages Containing Login Portals")
+        print("  "+"------------------------------")
+        print(' | site:"'+(url)+'" inurl:admin/index.php')
+        print(' | inurl:("admin/password.php") +site:'+(url))
+        print(' | site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")')
+        print(' | site:conf.'+(url)+'/signin/')
+        print(' | site:login.'+(url)+'/signin/')
+        print(' | site:admin.'+(url)+'/signin/')
+        print(' | site:portal.'+(url)+'/signin/')
+        print(' | site:social.'+(url)+'/signin/')
+        print(' | site:accounts.'+(url)+'/signin/')
+        print("")
+        print("")
         print("-------------------------")
         print("-- Summary on CMS scan --")
         print("-------------------------")
@@ -477,3 +594,4 @@ def filter7(url):
         print("----------------------------")
         print(*php, sep=' \n')
         print("")
+
