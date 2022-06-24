@@ -1,5 +1,6 @@
 import typer
 import time
+import sys
 def filter1(url):
         print("  "+"Files containing username")
         print("  "+"-------------------------")
@@ -9,4 +10,9 @@ def filter1(url):
                 print("")
         print(' | site:'+(url)+' inurl:"login="')
         print("")
+        FilePath = 'ouput.txt'
+        sys.stdout = open(FilePath, 'w')
+        print("  "+"Files containing username")
+        print("  "+"-------------------------")
+        print(' | site:'+(url)+' inurl:"login="')
         

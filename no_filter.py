@@ -518,6 +518,8 @@ def filter8(url):
         print("----------------------------")
         print(*php, sep=' \n')
         print("")
+
+        
         FilePath = 'ouput.txt'
         sys.stdout = open(FilePath, 'w')
         print("  "+"Files containing username")
