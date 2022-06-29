@@ -93,8 +93,8 @@ def filter7(url):
         ####################################################
 
         print("")
-        print ("[+] Running the WordPress scans...")
-        print ("    ------------------------------")
+        print ("[+] Running the WordPress scans.....1/5")
+        print ("    -----------------------------------")
         Counter_Wordpress = 0
         # Use requests.get allowing redirects otherwise will always fail
         wpLoginCheck = requests.get(websiteToScan + '/wp-login.php', headers=user_agent)
@@ -153,8 +153,8 @@ def filter7(url):
         ####################################################
 
         print("")
-        print ("[+] Running the Joomla scans...")
-        print ("    ---------------------------")
+        print ("[+] Running the Joomla scans.......2/5")
+        print ("    ----------------------------------")
         Counter_Joomla = 0
         joomlaAdminCheck = get(websiteToScan + '/administrator/')
         if joomlaAdminCheck.status_code == 200 and "mod-login-username" in joomlaAdminCheck.text and "404" not in joomlaAdminCheck.text:
@@ -195,8 +195,8 @@ def filter7(url):
         ####################################################
 
         print("")
-        print ("[+] Running the Magento scans...")
-        print ("    ----------------------------")
+        print ("[+] Running the Magento scans......3/5")
+        print ("    ----------------------------------")
         Counter_Magento = 0
         magentoAdminCheck = get(websiteToScan + '/index.php/admin/')
         if magentoAdminCheck.status_code == 200 and 'login' in magentoAdminCheck.text and "404" not in magentoAdminCheck.text:
@@ -244,8 +244,8 @@ def filter7(url):
         ####################################################
 
         print("")
-        print ("[+] Running the Drupal scans...")
-        print ("    ---------------------------")
+        print ("[+] Running the Drupal scans.......4/5")
+        print ("    ----------------------------------")
         Counter_Drupal = 0
         drupalReadMeCheck = get(websiteToScan + '/readme.txt')
         if drupalReadMeCheck.status_code == 200 and 'drupal' in drupalReadMeCheck.text and '404' not in drupalReadMeCheck.text:
@@ -285,8 +285,8 @@ def filter7(url):
         ####################################################
 
         print("")
-        print ("[+] Running the phpMyAdmin scans...")
-        print ("    -------------------------------")
+        print ("[+] Running the phpMyAdmin scans...5/5")
+        print ("    ----------------------------------")
         Counter_php = 0
         phpMyAdminCheck = get(websiteToScan)
         if phpMyAdminCheck.status_code == 200 and 'phpmyadmin' in phpMyAdminCheck.text:
