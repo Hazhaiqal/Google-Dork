@@ -1,53 +1,6 @@
-  Files containing username
-  -------------------------
- | site:www.tmrnd.com.my inurl:"login="
-
-  Files containing passwords
-  --------------------------
- | site:www.tmrnd.com.my intext:"password"
- | site:www.tmrnd.com.my "password"
- | site:www.tmrnd.com.my "admin password"
- | site:www.tmrnd.com.my intext:pass.txt
-
-  Sensitive Directories
-  ---------------------
- | inurl:/database* ext:sql intext:index of -site:www.tmrnd.com.my
- | inurl:"/drive/folders/" site:www.tmrnd.com.my
- | site:www.tmrnd.com.my shared by
- | intitle:index.of ios -site:www.tmrnd.com.my
- | inurl:"folderview?id=" site:www.tmrnd.com.my
- | intitle:"index of" "parent directory" "desktop.ini" site:www.tmrnd.com.my
-
-  web Server Detection
-  --------------------
- | site:ftp.www.tmrnd.com.my "Web File Manager"
- | inurl:oraweb -site:www.tmrnd.com.my
-
-  Files Containing Juicy Info
-  ---------------------------
- | "site:www.tmrnd.com.my"/""
- | intext:"password" | "passwd" | "pwd" site:www.tmrnd.com.my
- | allintext:www.tmrnd.com.my filetype:log
- | intext:"SECRET_KEY=" site:www.tmrnd.com.my
- | site:www.tmrnd.com.my "*.pdf"
- | intext:"private_key=" site:www.tmrnd.com.my
-
-  Pages Containing Login Portals
-  ------------------------------
- | site:"www.tmrnd.com.my" inurl:admin/index.php
- | inurl:("admin/password.php") +site:www.tmrnd.com.my
- | site:www.tmrnd.com.my inurl:("administrator/login.php" OR "admin/login.php")
- | site:conf.www.tmrnd.com.my/signin/
- | site:login.www.tmrnd.com.my/signin/
- | site:admin.www.tmrnd.com.my/signin/
- | site:portal.www.tmrnd.com.my/signin/
- | site:social.www.tmrnd.com.my/signin/
- | site:accounts.www.tmrnd.com.my/signin/
-
-
-*************************
-** Summary on CMS scan **
-*************************
+-------------------------
+-- Summary on CMS scan --
+-------------------------
 
 Wordpress CMS used   :  1
 ----------------------------

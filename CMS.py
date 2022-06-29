@@ -93,8 +93,8 @@ def filter7(url):
         ####################################################
 
         print("")
-        print ("[+] Running the WordPress scans.....1/5")
-        print ("    -----------------------------------")
+        print ("[+] Running the WordPress scans....1/5")
+        print ("    ----------------------------------")
         Counter_Wordpress = 0
         # Use requests.get allowing redirects otherwise will always fail
         wpLoginCheck = requests.get(websiteToScan + '/wp-login.php', headers=user_agent)
