@@ -45,9 +45,10 @@
  | site:accounts.www.tmrnd.com.my/signin/
 
 
--------------------------
--- Summary on CMS scan --
--------------------------
+*************************
+** Summary on CMS scan **
+*************************
+
 Wordpress CMS used   :  1
 ----------------------------
 http://www.tmrnd.com.my/wp-login.php
