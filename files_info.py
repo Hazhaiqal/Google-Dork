@@ -2,8 +2,8 @@ import typer
 import time
 import sys
 def filter5(url): 
-        print("  "+"Files Containing Juicy Info")
-        print("  "+"---------------------------")
+        print("  "+"Files Containing Juicy Info...1/1")
+        print("  "+"---------------------------------")
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.04)

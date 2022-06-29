@@ -2,8 +2,8 @@ import typer
 import time
 import sys
 def filter4(url):
-        print("  "+"web Server Detection")
-        print("  "+"--------------------")
+        print("  "+"web Server Detection...1/1")
+        print("  "+"--------------------------")
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.02)

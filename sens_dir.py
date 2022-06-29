@@ -2,8 +2,8 @@ import typer
 import time
 import sys
 def filter3(url):
-        print("  "+"Sensitive Directories")
-        print("  "+"---------------------")
+        print("  "+"Sensitive Directories...1/1")
+        print("  "+"---------------------------")
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.03)
