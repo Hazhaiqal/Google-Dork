@@ -1,12 +1,10 @@
 import typer
-import CMS
 import password
 import username
 import sens_dir 
 import server_detect
 import files_info
 import login_portals
-import no_filter
 
 
 app = typer.Typer(help="Google Dork Automation Tool")
@@ -16,19 +14,6 @@ app = typer.Typer(help="Google Dork Automation Tool")
 
 def urltoscan(url: str = typer.Argument( help="URL for enumeration", default=None), filter: int = typer.Argument(help="Filter number: 1...8", default=None)):
     
-    """ 
-     Example : python.exe Typer1.py geeksforgeeks.com 3\n
-     Filter Available: \n 
-     1.  Files containing username\n
-     2.  Files containing passwords\n 
-     3.  Sensitive Directories\n 
-     4.  Web Server Detection\n 
-     5.  Files Containing Juicy Info\n 
-     6.  Pages Containing Login Portals\n 
-     7.  Content Management System Scan\n 
-     8.  No Filter(Display all)\n 
-
-    """
     
     print("")
     print(f"Enumerated URL:  {url}")
@@ -52,12 +37,6 @@ def urltoscan(url: str = typer.Argument( help="URL for enumeration", default=Non
         case 6: 
             login_portals.filter6(url)
 
-        case 7: 
-            CMS.filter7(url)
-
-        case 8:
-            no_filter.filter8(url)
-    
 
 
 if __name__ == "__main__":
