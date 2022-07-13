@@ -400,7 +400,7 @@ def filter6(url):
             print(*php, sep=' \n')
 
         print("")
-        sys.stdout = open('D:/ouput_login_portals.txt', 'w')
+        sys.stdout = open('D:/'+url+'_ouput_login_portals.txt', 'w')
         print("Pages Containing Login Portals")
         print("------------------------------")
         print('site:"'+(url)+'" inurl:admin/index.php')

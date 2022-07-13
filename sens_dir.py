@@ -379,7 +379,7 @@ def filter3(url):
            print(*php, sep=' \n')
 
         print("")
-        sys.stdout = open('D:/ouput_sens_dir.txt', 'w')
+        sys.stdout = open('D:/'+url+'_ouput_sens_dir.txt', 'w')
         print("  "+"Sensitive Directories")
         print("  "+"---------------------")
         print(' | inurl:/database* ext:sql intext:index of -site:'+(url))

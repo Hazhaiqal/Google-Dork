@@ -361,7 +361,7 @@ def filter1(url):
 
 
      print("")
-     sys.stdout = open('D:/ouput_username.txt', 'w')
+     sys.stdout = open('D:/'+url+'_ouput_username.txt', 'w')
      print("Files containing username")
      print("-------------------------")
      print('site:'+(url)+' inurl:"login="')

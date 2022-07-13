@@ -363,7 +363,7 @@ def filter4(url):
            print(*php, sep=' \n')
 
         print("")
-        sys.stdout = open('D:/server_detect.txt', 'w')
+        sys.stdout = open('D:/'+url+'_server_detect.txt', 'w')
         print("  "+"web Server Detection")
         print("  "+"--------------------")
         print(' | site:ftp.'+(url)+' "Web File Manager"')

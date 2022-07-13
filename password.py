@@ -370,7 +370,7 @@ def filter2(url):
             print(*php, sep=' \n')
 
         print("")
-        sys.stdout = open('D:/ouput_password.txt', 'w')
+        sys.stdout = open('D:/'+url+'_ouput_password.txt', 'w')
         print("  "+"Files containing passwords")
         print("  "+"--------------------------")
         print(' | site:'+(url)+' intext:"password"')

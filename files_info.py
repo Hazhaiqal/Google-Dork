@@ -378,7 +378,7 @@ def filter5(url):
             print(*php, sep=' \n')
 
         print("")
-        sys.stdout = open('D:/ouput_files_info.txt', 'w')
+        sys.stdout = open('D:/'+url+'_ouput_files_info.txt', 'w')
         print("  "+"Files Containing Juicy Info")
         print("  "+"---------------------------")
         print(' | "site:'+(url)+'"/""')
