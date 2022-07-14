@@ -1,13 +1,13 @@
 import typer 
 import time
 import sys
-import web_search
 from typing import Counter
 import requests
 import progressbar 
 import progressbar
 from progressbar import ProgressBar
 import sys
+from googlesearch import search
 
 def filter5(url):
         print("  "+"Files Containing Juicy Info....1/1")
@@ -16,30 +16,86 @@ def filter5(url):
                 for value in progress:
                     time.sleep(0.04)
                 print("")
+        
+        ws = []
         print(' | "site:'+(url)+'"/""')
         q = 'site:'+(url)+'"/""'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | intext:"password" | "passwd" | "pwd" site:'+(url))
         q = 'intext:"password" | "passwd" | "pwd" site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | allintext:'+(url)+' filetype:log')
         q = 'allintext:'+(url)+' filetype:log'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | intext:"SECRET_KEY=" site:'+(url))
         q = 'intext:"SECRET_KEY=" site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | site:'+(url)+' "*.pdf"')
         q = 'site:'+(url)+' "*.pdf"'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | intext:"private_key=" site:'+(url))
         q = 'intext:"private_key=" site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print("")
 
@@ -379,16 +435,12 @@ def filter5(url):
 
         print("")
         sys.stdout = open('D:/'+url+'_ouput_files_info.txt', 'w')
-        print("  "+"Files Containing Juicy Info")
-        print("  "+"---------------------------")
-        print(' | "site:'+(url)+'"/""')
-        print(' | intext:"password" | "passwd" | "pwd" site:'+(url))
-        print(' | allintext:'+(url)+' filetype:log')
-        print(' | intext:"SECRET_KEY=" site:'+(url))
-        print(' | site:'+(url)+' "*.pdf"')
-        print(' | intext:"private_key=" site:'+(url))
+        print("*********************************")
+        print("** Files Containing Juicy Info **")
+        print("*********************************")
+        print(*ws, sep=' \n')
         print("")
-        print("")
+        
         print("*************************")
         print("** Summary on CMS scan **")
         print("*************************")

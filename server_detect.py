@@ -1,13 +1,12 @@
 import typer 
 import time 
 import sys
-import web_search
 from typing import Counter
 import requests
 import progressbar 
 import progressbar
 from progressbar import ProgressBar
-import sys
+from googlesearch import search 
 
 def filter4(url):
         print("  "+"web Server Detection....1/1")
@@ -17,13 +16,32 @@ def filter4(url):
                     time.sleep(0.02)
                 print("")
 
+        ws = []
         print(' | site:ftp.'+(url)+' "Web File Manager"')
         q = 'site:ftp.'+(url)+' "Web File Manager"'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | inurl:oraweb -site:'+(url))
         q = 'inurl:oraweb -site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print("")
 
@@ -364,12 +382,12 @@ def filter4(url):
 
         print("")
         sys.stdout = open('D:/'+url+'_server_detect.txt', 'w')
-        print("  "+"web Server Detection")
-        print("  "+"--------------------")
-        print(' | site:ftp.'+(url)+' "Web File Manager"')
-        print(' | inurl:oraweb -site:'+(url))
+        print("**************************")
+        print("** Web Server Detection **")
+        print("**************************")
+        print(*ws, sep=' \n')
         print("")
-        print("")
+        
         print("*************************")
         print("** Summary on CMS scan **")
         print("*************************")

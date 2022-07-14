@@ -1,13 +1,13 @@
 import typer 
 import time
 import sys
-import web_search
 from typing import Counter
 import requests
 import progressbar 
 import progressbar
 from progressbar import ProgressBar
 import sys
+from googlesearch import search 
 
 def filter3(url): 
         print("  "+"Sensitive Directories....1/6")
@@ -16,30 +16,85 @@ def filter3(url):
                 for value in progress:
                     time.sleep(0.03)
                 print("")
-                
+        
+        ws = []
         print(' | inurl:/database* ext:sql intext:index of -site:'+(url))
         q = 'inurl:/database* ext:sql intext:index of -site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | inurl:"/drive/folders/" site:'+(url))
         q = ' inurl:"/drive/folders/" site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | site:'+(url)+' shared by')
         q = 'site:'+(url)+' shared by'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
         print(' | intitle:index.of ios -site:'+(url))
         q = 'intitle:index.of ios -site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | inurl:"folderview?id=" site:'+(url))
         q = 'inurl:"folderview?id=" site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
         print(' | intitle:"index of" "parent directory" "desktop.ini" site:'+(url))
         q = 'intitle:"index of" "parent directory" "desktop.ini" site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
         print("")
 
@@ -380,16 +435,12 @@ def filter3(url):
 
         print("")
         sys.stdout = open('D:/'+url+'_ouput_sens_dir.txt', 'w')
-        print("  "+"Sensitive Directories")
-        print("  "+"---------------------")
-        print(' | inurl:/database* ext:sql intext:index of -site:'+(url))
-        print(' | inurl:"/drive/folders/" site:'+(url))
-        print(' | site:'+(url)+' shared by')
-        print(' | intitle:index.of ios -site:'+(url))
-        print(' | inurl:"folderview?id=" site:'+(url))
-        print(' | intitle:"index of" "parent directory" "desktop.ini" site:'+(url))
+        print("***************************")
+        print("** Sensitive Directories **")
+        print("***************************")
+        print(*ws, sep=' \n')
         print("")
-        print("")
+        
         print("*************************")
         print("** Summary on CMS scan **")
         print("*************************")

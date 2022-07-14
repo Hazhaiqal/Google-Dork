@@ -1,13 +1,13 @@
 import typer 
 import time
 import sys
-import web_search
 from typing import Counter
 import requests
 import progressbar 
 import progressbar
 from progressbar import ProgressBar
 import sys
+from googlesearch import search
 
 def filter2(url):
         print("  "+"Files containing passwords....1/1")
@@ -16,21 +16,58 @@ def filter2(url):
                 for value in progress:
                     time.sleep(0.02)
                 print("")
+        ws = []
         print(' | site:'+(url)+' intext:"password"')
         q = 'site:'+(url)+' intext:"password"'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | site:'+(url)+' "password"')
         q = 'site:'+(url)+' "password"'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | site:'+(url)+' "admin password"')
         q = 'site:'+(url)+' "admin password"'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print(' | site:'+(url)+' intext:pass.txt')
         q = 'site:'+(url)+' intext:pass.txt'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
 
         print("")
 
@@ -371,14 +408,12 @@ def filter2(url):
 
         print("")
         sys.stdout = open('D:/'+url+'_ouput_password.txt', 'w')
-        print("  "+"Files containing passwords")
-        print("  "+"--------------------------")
-        print(' | site:'+(url)+' intext:"password"')
-        print(' | site:'+(url)+' "password"')
-        print(' | site:'+(url)+' "admin password"')
-        print(' | site:'+(url)+' intext:pass.txt')
+        print("********************************")
+        print("** Files containing passwords **")
+        print("********************************")
+        print(*ws, sep=' \n')
         print("")
-        print("")
+        
         print("*************************")
         print("** Summary on CMS scan **")
         print("*************************")

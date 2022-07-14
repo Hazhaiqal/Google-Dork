@@ -1,14 +1,13 @@
 import typer 
 import time 
 import sys
-import web_search
 from typing import Counter
 import requests
 import progressbar 
 import progressbar
 from progressbar import ProgressBar
 import sys
-
+from googlesearch import search
 def filter6(url):
         print("  "+"Pages Containing Login Portals....1/1")
         print("  "+"------------------------------")
@@ -17,49 +16,131 @@ def filter6(url):
                     time.sleep(0.05)
                 print("")
 
+        ws = []
         print(' | site:"'+(url)+'" inurl:admin/index.php')
         q = 'site:"'+(url)+'" inurl:admin/index.php'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | inurl:("admin/password.php") +site:'+(url))
         q = 'inurl:("admin/password.php") +site:'+(url)
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")')
         q = 'site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | site:conf.'+(url)+'/signin/')
         q = 'site:conf.'+(url)+'/signin/'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
        
 
         print(' | site:login.'+(url)+'/signin/')
         q = 'site:login.'+(url)+'/signin/'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | site:admin.'+(url)+'/signin/')
         q = 'site:admin.'+(url)+'/signin/'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | site:portal.'+(url)+'/signin/')
         q = 'site:portal.'+(url)+'/signin/'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | site:social.'+(url)+'/signin/')
         q = 'site:social.'+(url)+'/signin/'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print(' | site:accounts.'+(url)+'/signin/')
         q = 'site:accounts.'+(url)+'/signin/'
-        web_search.websearch(q)
+        query = q
+        count = 0 
+        print("")
+        for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ws.append(i)   
+            count += 1 
+        print("   Result =",count)
+        print("   -----------")
+        print("")
         
 
         print("")
@@ -401,19 +482,12 @@ def filter6(url):
 
         print("")
         sys.stdout = open('D:/'+url+'_ouput_login_portals.txt', 'w')
-        print("Pages Containing Login Portals")
-        print("------------------------------")
-        print('site:"'+(url)+'" inurl:admin/index.php')
-        print('inurl:("admin/password.php") +site:'+(url))
-        print('site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")')
-        print('site:conf.'+(url)+'/signin/')
-        print('site:login.'+(url)+'/signin/')
-        print('site:admin.'+(url)+'/signin/')
-        print('site:portal.'+(url)+'/signin/')
-        print('site:social.'+(url)+'/signin/')
-        print('site:accounts.'+(url)+'/signin/')
+        print("************************************")
+        print("** Pages Containing Login Portals **")
+        print("************************************")
+        print(*ws, sep=' \n')
         print("")
-        print("")
+        
         print("*************************")
         print("** Summary on CMS scan **")
         print("*************************")

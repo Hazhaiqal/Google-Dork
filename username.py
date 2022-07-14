@@ -2,13 +2,13 @@ from pydantic import FilePath
 import typer
 import time
 import sys
-import web_search
 from typing import Counter
 import requests
 import progressbar 
 import progressbar
 from progressbar import ProgressBar
 import sys
+from googlesearch import search
 
 def filter1(url):
      print("  "+"Files containing username....1/6")
@@ -17,9 +17,20 @@ def filter1(url):
           for value in progress:
                time.sleep(0.01)
           print("")
+          
+     ws = []
      print(' | site:'+(url)+' inurl:"login="')
      q = 'site:'+(url)+' inurl:"login="'
-     web_search.websearch(q)
+     query = q
+     count = 0 
+     print("")
+     for i in search(query, tld="com", num=10, stop=10, pause=5): 
+        print(i)
+        ws.append(i)   
+        count += 1 
+     print("   Result =",count)
+     print("   -----------")
+     print("")
 
      print("")
 
@@ -362,11 +373,12 @@ def filter1(url):
 
      print("")
      sys.stdout = open('D:/'+url+'_ouput_username.txt', 'w')
-     print("Files containing username")
-     print("-------------------------")
-     print('site:'+(url)+' inurl:"login="')
+     print("********************************")
+     print("** Files Containing Username **")
+     print("********************************")
+     print(*ws, sep=' \n')
      print("")
-     print("")
+
      print("*************************")
      print("** Summary on CMS scan **")
      print("*************************")
