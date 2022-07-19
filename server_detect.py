@@ -30,8 +30,8 @@ def filter4(url):
         print("   -----------")
         print("")
 
-        print(' | inurl:oraweb -site:'+(url))
-        q = 'inurl:oraweb -site:'+(url)
+        print(' | inurl:oraweb + site:'+(url))
+        q = 'inurl:oraweb + site:'+(url)
         query = q
         count = 0 
         print("")

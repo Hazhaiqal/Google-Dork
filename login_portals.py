@@ -31,8 +31,8 @@ def filter6(url):
         print("")
         
 
-        print(' | inurl:("admin/password.php") +site:'+(url))
-        q = 'inurl:("admin/password.php") +site:'+(url)
+        print(' | inurl:("admin/password.php") + site:'+(url))
+        q = 'inurl:("admin/password.php") + site:'+(url)
         query = q
         count = 0 
         print("")

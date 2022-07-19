@@ -18,8 +18,8 @@ def filter3(url):
                 print("")
         
         ws = []
-        print(' | inurl:/database* ext:sql intext:index of -site:'+(url))
-        q = 'inurl:/database* ext:sql intext:index of -site:'+(url)
+        print(' | site:'+(url)+ ' inurl:/database* ext:sql intext:index of')
+        q = 'site:'+(url)+ ' inurl:/database* ext:sql intext:index of'
         query = q
         count = 0 
         print("")
@@ -31,8 +31,8 @@ def filter3(url):
         print("   -----------")
         print("")
 
-        print(' | inurl:"/drive/folders/" site:'+(url))
-        q = ' inurl:"/drive/folders/" site:'+(url)
+        print(' | site:'+(url)+' inurl:"/drive/folders/"' )
+        q = 'site:'+(url)+' inurl:"/drive/folders/"'
         query = q
         count = 0 
         print("")
@@ -57,8 +57,8 @@ def filter3(url):
         print("   -----------")
         print("")
         
-        print(' | intitle:index.of ios -site:'+(url))
-        q = 'intitle:index.of ios -site:'+(url)
+        print(' | site:'+(url)+' intitle:index.of ios')
+        q = 'site:'+(url)+' intitle:index.of ios'
         query = q
         count = 0 
         print("")
@@ -70,8 +70,8 @@ def filter3(url):
         print("   -----------")
         print("")
 
-        print(' | inurl:"folderview?id=" site:'+(url))
-        q = 'inurl:"folderview?id=" site:'+(url)
+        print(' | site:'+(url)+' inurl:"folderview?id="')
+        q = 'site:'+(url)+' inurl:"folderview?id="'
         query = q
         count = 0 
         print("")
@@ -83,8 +83,8 @@ def filter3(url):
         print("   -----------")
         print("")
         
-        print(' | intitle:"index of" "parent directory" "desktop.ini" site:'+(url))
-        q = 'intitle:"index of" "parent directory" "desktop.ini" site:'+(url)
+        print(' | intitle:"index of" "parent directory" "desktop.ini" + site:'+(url))
+        q = 'intitle:"index of" "parent directory" "desktop.ini" + site:'+(url)
         query = q
         count = 0 
         print("")

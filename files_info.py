@@ -31,8 +31,8 @@ def filter5(url):
         print("   -----------")
         print("")
 
-        print(' | intext:"password" | "passwd" | "pwd" site:'+(url))
-        q = 'intext:"password" | "passwd" | "pwd" site:'+(url)
+        print(' | intext:"password" | "passwd" | "pwd" + site:'+(url))
+        q = 'intext:"password" | "passwd" | "pwd" + site:'+(url)
         query = q
         count = 0 
         print("")
@@ -58,8 +58,8 @@ def filter5(url):
         print("   -----------")
         print("")
 
-        print(' | intext:"SECRET_KEY=" site:'+(url))
-        q = 'intext:"SECRET_KEY=" site:'+(url)
+        print(' | intext:"SECRET_KEY=" + site:'+(url))
+        q = 'intext:"SECRET_KEY=" + site:'+(url)
         query = q
         count = 0 
         print("")
@@ -84,8 +84,8 @@ def filter5(url):
         print("   -----------")
         print("")
 
-        print(' | intext:"private_key=" site:'+(url))
-        q = 'intext:"private_key=" site:'+(url)
+        print(' | intext:"private_key=" + site:'+(url))
+        q = 'intext:"private_key=" + site:'+(url)
         query = q
         count = 0 
         print("")
