@@ -13,11 +13,13 @@ from googlesearch import search
 def filter1(url):
      print("  "+"Files containing username....1/6")
      print("  "+"--------------------------------")
+     #progress bar display part
      with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
           for value in progress:
                time.sleep(0.01)
           print("")
           
+    #web search for dorks =
      ws = []
      print(' | site:'+(url)+' inurl:"login="')
      q = 'site:'+(url)+' inurl:"login="'
@@ -406,3 +408,11 @@ def filter1(url):
      print("----------------------------")
      print(*php, sep=' \n')
      print("")
+
+     sys.stdout = open('D:/'+url+'_Server_Detection_dorks.txt', 'w')
+     print("****************************")
+     print("** Server Detection Dorks **")
+     print("****************************")
+     print("")
+     print('site:ftp.'+(url)+' "Web File Manager"')
+     print('inurl:oraweb + site:'+(url))

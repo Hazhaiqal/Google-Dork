@@ -12,11 +12,13 @@ from googlesearch import search
 def filter5(url):
         print("  "+"Files Containing Juicy Info....1/1")
         print("  "+"----------------------------------")
+        #progress bar display part
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.04)
                 print("")
         
+        #web search for dorks =
         ws = []
         print(' | "site:'+(url)+'"/""')
         q = 'site:'+(url)+'"/""'
@@ -31,6 +33,7 @@ def filter5(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | intext:"password" | "passwd" | "pwd" + site:'+(url))
         q = 'intext:"password" | "passwd" | "pwd" + site:'+(url)
         query = q
@@ -44,7 +47,7 @@ def filter5(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks =
         print(' | allintext:'+(url)+' filetype:log')
         q = 'allintext:'+(url)+' filetype:log'
         query = q
@@ -58,6 +61,7 @@ def filter5(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | intext:"SECRET_KEY=" + site:'+(url))
         q = 'intext:"SECRET_KEY=" + site:'+(url)
         query = q
@@ -71,6 +75,7 @@ def filter5(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | site:'+(url)+' "*.pdf"')
         q = 'site:'+(url)+' "*.pdf"'
         query = q
@@ -84,6 +89,7 @@ def filter5(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | intext:"private_key=" + site:'+(url))
         q = 'intext:"private_key=" + site:'+(url)
         query = q
@@ -468,3 +474,15 @@ def filter5(url):
         print("----------------------------")
         print(*php, sep=' \n')
         print("")
+
+        sys.stdout = open('D:/'+url+'_Files_Info_dorks.txt', 'w')
+        print("***************************************")
+        print("** Files Containing Juicy Info Dorks **")
+        print("***************************************")
+        print("")
+        print('site:'+(url)+'"/""')
+        print('intext:"password" | "passwd" | "pwd" + site:'+(url))
+        print('allintext:'+(url)+' filetype:log')
+        print('intext:"SECRET_KEY=" + site:'+(url))
+        print('site:'+(url)+' "*.pdf"')
+        print('intext:"private_key=" + site:'+(url))

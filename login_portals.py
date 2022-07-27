@@ -11,11 +11,13 @@ from googlesearch import search
 def filter6(url):
         print("  "+"Pages Containing Login Portals....1/1")
         print("  "+"------------------------------")
+        #progress bar display part
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.05)
                 print("")
 
+        #web search for dorks = 
         ws = []
         print(' | site:"'+(url)+'" inurl:admin/index.php')
         q = 'site:"'+(url)+'" inurl:admin/index.php'
@@ -30,7 +32,7 @@ def filter6(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks = 
         print(' | inurl:("admin/password.php") + site:'+(url))
         q = 'inurl:("admin/password.php") + site:'+(url)
         query = q
@@ -44,7 +46,7 @@ def filter6(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks = 
         print(' | site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")')
         q = 'site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")'
         query = q
@@ -58,7 +60,7 @@ def filter6(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks = 
         print(' | site:conf.'+(url)+'/signin/')
         q = 'site:conf.'+(url)+'/signin/'
         query = q
@@ -72,7 +74,7 @@ def filter6(url):
         print("   -----------")
         print("")
        
-
+        #web search for dorks = 
         print(' | site:login.'+(url)+'/signin/')
         q = 'site:login.'+(url)+'/signin/'
         query = q
@@ -86,7 +88,7 @@ def filter6(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks = 
         print(' | site:admin.'+(url)+'/signin/')
         q = 'site:admin.'+(url)+'/signin/'
         query = q
@@ -100,7 +102,7 @@ def filter6(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks = 
         print(' | site:portal.'+(url)+'/signin/')
         q = 'site:portal.'+(url)+'/signin/'
         query = q
@@ -114,7 +116,7 @@ def filter6(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks = 
         print(' | site:social.'+(url)+'/signin/')
         q = 'site:social.'+(url)+'/signin/'
         query = q
@@ -128,7 +130,7 @@ def filter6(url):
         print("   -----------")
         print("")
         
-
+        #web search for dorks = 
         print(' | site:accounts.'+(url)+'/signin/')
         q = 'site:accounts.'+(url)+'/signin/'
         query = q
@@ -515,3 +517,18 @@ def filter6(url):
         print("----------------------------")
         print(*php, sep=' \n')
         print("")
+
+        sys.stdout = open('D:/'+url+'_login_portals_dorks.txt', 'w')
+        print("******************************************")
+        print("** Files Containing Login Portals Dorks **")
+        print("******************************************")
+        print("")
+        print('site:"'+(url)+'" inurl:admin/index.php')
+        print('inurl:("admin/password.php") + site:'+(url))
+        print('site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")')
+        print('site:conf.'+(url)+'/signin/')
+        print('site:login.'+(url)+'/signin/')
+        print('site:admin.'+(url)+'/signin/')
+        print('site:portal.'+(url)+'/signin/')
+        print('site:social.'+(url)+'/signin/')
+        print('site:accounts.'+(url)+'/signin/')

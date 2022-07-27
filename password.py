@@ -12,10 +12,13 @@ from googlesearch import search
 def filter2(url):
         print("  "+"Files containing passwords....1/1")
         print("  "+"--------------------------")
+        #progress bar display part
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.02)
                 print("")
+
+        #web search for dorks =
         ws = []
         print(' | site:'+(url)+' intext:"password"')
         q = 'site:'+(url)+' intext:"password"'
@@ -30,6 +33,7 @@ def filter2(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | site:'+(url)+' "password"')
         q = 'site:'+(url)+' "password"'
         query = q
@@ -43,6 +47,7 @@ def filter2(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | site:'+(url)+' "admin password"')
         q = 'site:'+(url)+' "admin password"'
         query = q
@@ -56,6 +61,7 @@ def filter2(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | site:'+(url)+' intext:pass.txt')
         q = 'site:'+(url)+' intext:pass.txt'
         query = q
@@ -441,3 +447,13 @@ def filter2(url):
         print("----------------------------")
         print(*php, sep=' \n')
         print("")
+
+        sys.stdout = open('D:/'+url+'_password_dorks.txt', 'w')
+        print("*************************************")
+        print("** Files Containing Password Dorks **")
+        print("*************************************")
+        print("")
+        print('site:'+(url)+' intext:"password"')
+        print('site:'+(url)+' "password"')
+        print('site:'+(url)+' "admin password"')
+        print('site:'+(url)+' intext:pass.txt')

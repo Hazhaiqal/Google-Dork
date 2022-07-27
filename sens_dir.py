@@ -12,11 +12,13 @@ from googlesearch import search
 def filter3(url): 
         print("  "+"Sensitive Directories....1/6")
         print("  "+"----------------------------")
+        #progress bar display part
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.03)
                 print("")
         
+        #web search for dorks =
         ws = []
         print(' | site:'+(url)+ ' inurl:/database* ext:sql intext:index of')
         q = 'site:'+(url)+ ' inurl:/database* ext:sql intext:index of'
@@ -31,6 +33,7 @@ def filter3(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | site:'+(url)+' inurl:"/drive/folders/"' )
         q = 'site:'+(url)+' inurl:"/drive/folders/"'
         query = q
@@ -44,6 +47,7 @@ def filter3(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | site:'+(url)+' shared by')
         q = 'site:'+(url)+' shared by'
         query = q
@@ -57,6 +61,7 @@ def filter3(url):
         print("   -----------")
         print("")
         
+        #web search for dorks =
         print(' | site:'+(url)+' intitle:index.of ios')
         q = 'site:'+(url)+' intitle:index.of ios'
         query = q
@@ -70,6 +75,7 @@ def filter3(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | site:'+(url)+' inurl:"folderview?id="')
         q = 'site:'+(url)+' inurl:"folderview?id="'
         query = q
@@ -83,6 +89,7 @@ def filter3(url):
         print("   -----------")
         print("")
         
+        #web search for dorks =
         print(' | intitle:"index of" "parent directory" "desktop.ini" + site:'+(url))
         q = 'intitle:"index of" "parent directory" "desktop.ini" + site:'+(url)
         query = q
@@ -469,3 +476,14 @@ def filter3(url):
         print(*php, sep=' \n')
         print("")
         
+        sys.stdout = open('D:/'+url+'_sensitive_dir_dorks.txt', 'w')
+        print("*******************************")
+        print("** Sensitive Directory Dorks **")
+        print("*******************************")
+        print("")
+        print('site:'+(url)+ ' inurl:/database* ext:sql intext:index of')
+        print('site:'+(url)+' inurl:"/drive/folders/"')
+        print('site:'+(url)+' shared by')
+        print('site:'+(url)+' intitle:index.of ios')
+        print('site:'+(url)+' inurl:"folderview?id="')
+        print('intitle:"index of" "parent directory" "desktop.ini" + site:'+(url))

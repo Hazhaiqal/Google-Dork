@@ -11,11 +11,13 @@ from googlesearch import search
 def filter4(url):
         print("  "+"web Server Detection....1/1")
         print("  "+"--------------------")
+        #progress bar display part
         with typer.progressbar( label = "  Modifiying dorks ", length=100) as progress:      
                 for value in progress:
                     time.sleep(0.02)
                 print("")
 
+        #web search for dorks =
         ws = []
         print(' | site:ftp.'+(url)+' "Web File Manager"')
         q = 'site:ftp.'+(url)+' "Web File Manager"'
@@ -30,6 +32,7 @@ def filter4(url):
         print("   -----------")
         print("")
 
+        #web search for dorks =
         print(' | inurl:oraweb + site:'+(url))
         q = 'inurl:oraweb + site:'+(url)
         query = q
@@ -415,3 +418,11 @@ def filter4(url):
         print("----------------------------")
         print(*php, sep=' \n')
         print("")
+
+        sys.stdout = open('D:/'+url+'_Server_Detection_dorks.txt', 'w')
+        print("****************************")
+        print("** Server Detection Dorks **")
+        print("****************************")
+        print("")
+        print('site:ftp.'+(url)+' "Web File Manager"')
+        print('inurl:oraweb + site:'+(url))
