@@ -1,12 +1,20 @@
 import typer 
 import time 
 import sys
-from typing import Counter
 import requests
-import progressbar 
-import progressbar
-from progressbar import ProgressBar
-from googlesearch import search 
+from googlesearch import search
+
+ra = []
+def websrape(query): 
+    global ra
+    count = 0 
+    for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ra.append(i)   
+            count += 1 
+    print("   Result =",count)
+    print("   -----------")
+    print("")
 
 def filter4(url):
         print("  "+"web Server Detection....1/1")
@@ -18,34 +26,18 @@ def filter4(url):
                 print("")
 
         #web search for dorks =
-        ws = []
         print(' | site:ftp.'+(url)+' "Web File Manager"')
         q = 'site:ftp.'+(url)+' "Web File Manager"'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
 
         #web search for dorks =
         print(' | inurl:oraweb + site:'+(url))
         q = 'inurl:oraweb + site:'+(url)
         query = q
-        count = 0 
+        websrape(query)
         print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
-        print("")
-
         print("")
 
         wp_counter = 0
@@ -58,9 +50,7 @@ def filter4(url):
         dp = [] 
         php_counter = 0
         php = []
-        pbar = progressbar.ProgressBar()
-        pbar = ProgressBar().start()
-        total_steps = 5
+       
         def get(websiteToScan):
             global user_agent
             user_agent = {
@@ -388,7 +378,7 @@ def filter4(url):
         print("**************************")
         print("** Web Server Detection **")
         print("**************************")
-        print(*ws, sep=' \n')
+        print(*ra, sep=' \n')
         print("")
         
         print("*************************")

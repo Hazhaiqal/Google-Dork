@@ -1,13 +1,20 @@
 import typer 
 import time
 import sys
-from typing import Counter
 import requests
-import progressbar 
-import progressbar
-from progressbar import ProgressBar
-import sys
 from googlesearch import search 
+
+ra = []
+def websrape(query): 
+    global ra
+    count = 0 
+    for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ra.append(i)   
+            count += 1 
+    print("   Result =",count)
+    print("   -----------")
+    print("")
 
 def filter3(url): 
         print("  "+"Sensitive Directories....1/6")
@@ -19,90 +26,46 @@ def filter3(url):
                 print("")
         
         #web search for dorks =
-        ws = []
         print(' | site:'+(url)+ ' inurl:/database* ext:sql intext:index of')
         q = 'site:'+(url)+ ' inurl:/database* ext:sql intext:index of'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
 
         #web search for dorks =
         print(' | site:'+(url)+' inurl:"/drive/folders/"' )
         q = 'site:'+(url)+' inurl:"/drive/folders/"'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
 
         #web search for dorks =
         print(' | site:'+(url)+' shared by')
         q = 'site:'+(url)+' shared by'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks =
         print(' | site:'+(url)+' intitle:index.of ios')
         q = 'site:'+(url)+' intitle:index.of ios'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
 
         #web search for dorks =
         print(' | site:'+(url)+' inurl:"folderview?id="')
         q = 'site:'+(url)+' inurl:"folderview?id="'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks =
         print(' | intitle:"index of" "parent directory" "desktop.ini" + site:'+(url))
         q = 'intitle:"index of" "parent directory" "desktop.ini" + site:'+(url)
         query = q
-        count = 0 
+        websrape(query)
         print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
-        print("")
-        
         print("")
 
         wp_counter = 0
@@ -115,9 +78,7 @@ def filter3(url):
         dp = [] 
         php_counter = 0
         php = []
-        pbar = progressbar.ProgressBar()
-        pbar = ProgressBar().start()
-        total_steps = 5
+        
         def get(websiteToScan):
                 global user_agent
                 user_agent = {
@@ -445,7 +406,7 @@ def filter3(url):
         print("***************************")
         print("** Sensitive Directories **")
         print("***************************")
-        print(*ws, sep=' \n')
+        print(*ra, sep=' \n')
         print("")
         
         print("*************************")

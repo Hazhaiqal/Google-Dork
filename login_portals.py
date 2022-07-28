@@ -1,13 +1,21 @@
 import typer 
 import time 
 import sys
-from typing import Counter
 import requests
-import progressbar 
-import progressbar
-from progressbar import ProgressBar
-import sys
 from googlesearch import search
+
+ra = []
+def websrape(query): 
+    global ra
+    count = 0 
+    for i in search(query, tld="com", num=10, stop=10, pause=5): 
+            print(i)
+            ra.append(i)   
+            count += 1 
+    print("   Result =",count)
+    print("   -----------")
+    print("")
+
 def filter6(url):
         print("  "+"Pages Containing Login Portals....1/1")
         print("  "+"------------------------------")
@@ -18,133 +26,67 @@ def filter6(url):
                 print("")
 
         #web search for dorks = 
-        ws = []
         print(' | site:"'+(url)+'" inurl:admin/index.php')
         q = 'site:"'+(url)+'" inurl:admin/index.php'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks = 
         print(' | inurl:("admin/password.php") + site:'+(url))
         q = 'inurl:("admin/password.php") + site:'+(url)
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks = 
         print(' | site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")')
         q = 'site:'+(url)+' inurl:("administrator/login.php" OR "admin/login.php")'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks = 
         print(' | site:conf.'+(url)+'/signin/')
         q = 'site:conf.'+(url)+'/signin/'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
        
         #web search for dorks = 
         print(' | site:login.'+(url)+'/signin/')
         q = 'site:login.'+(url)+'/signin/'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks = 
         print(' | site:admin.'+(url)+'/signin/')
         q = 'site:admin.'+(url)+'/signin/'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks = 
         print(' | site:portal.'+(url)+'/signin/')
         q = 'site:portal.'+(url)+'/signin/'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks = 
         print(' | site:social.'+(url)+'/signin/')
         q = 'site:social.'+(url)+'/signin/'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
         
         #web search for dorks = 
         print(' | site:accounts.'+(url)+'/signin/')
         q = 'site:accounts.'+(url)+'/signin/'
         query = q
-        count = 0 
+        websrape(query)
         print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
-        print("")
-        
-
         print("")
 
         wp_counter = 0
@@ -157,9 +99,7 @@ def filter6(url):
         dp = [] 
         php_counter = 0
         php = []
-        pbar = progressbar.ProgressBar()
-        pbar = ProgressBar().start()
-        total_steps = 5
+        
         def get(websiteToScan):
             global user_agent
             user_agent = {
@@ -487,7 +427,7 @@ def filter6(url):
         print("************************************")
         print("** Pages Containing Login Portals **")
         print("************************************")
-        print(*ws, sep=' \n')
+        print(*ra, sep=' \n')
         print("")
         
         print("*************************")

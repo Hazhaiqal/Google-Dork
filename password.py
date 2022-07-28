@@ -1,13 +1,20 @@
 import typer 
 import time
 import sys
-from typing import Counter
 import requests
-import progressbar 
-import progressbar
-from progressbar import ProgressBar
-import sys
 from googlesearch import search
+
+ra = []
+def websrape(query): 
+    global ra
+    count = 0 
+    for i in search(query, tld="com", num=10, stop=5, pause=5): 
+            print(i)
+            ra.append(i)   
+            count += 1 
+    print("   Result =",count)
+    print("   -----------")
+    print("")
 
 def filter2(url):
         print("  "+"Files containing passwords....1/1")
@@ -19,62 +26,32 @@ def filter2(url):
                 print("")
 
         #web search for dorks =
-        ws = []
         print(' | site:'+(url)+' intext:"password"')
         q = 'site:'+(url)+' intext:"password"'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
 
         #web search for dorks =
         print(' | site:'+(url)+' "password"')
         q = 'site:'+(url)+' "password"'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
 
         #web search for dorks =
         print(' | site:'+(url)+' "admin password"')
         q = 'site:'+(url)+' "admin password"'
         query = q
-        count = 0 
-        print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
+        websrape(query)
         print("")
 
         #web search for dorks =
         print(' | site:'+(url)+' intext:pass.txt')
         q = 'site:'+(url)+' intext:pass.txt'
         query = q
-        count = 0 
+        websrape(query)
         print("")
-        for i in search(query, tld="com", num=10, stop=10, pause=5): 
-            print(i)
-            ws.append(i)   
-            count += 1 
-        print("   Result =",count)
-        print("   -----------")
-        print("")
-
         print("")
 
         wp_counter = 0
@@ -87,9 +64,7 @@ def filter2(url):
         dp = [] 
         php_counter = 0
         php = []
-        pbar = progressbar.ProgressBar()
-        pbar = ProgressBar().start()
-        total_steps = 5
+        
         def get(websiteToScan):
             global user_agent
             user_agent = {
@@ -417,7 +392,7 @@ def filter2(url):
         print("********************************")
         print("** Files containing passwords **")
         print("********************************")
-        print(*ws, sep=' \n')
+        print(*ra, sep=' \n')
         print("")
         
         print("*************************")
