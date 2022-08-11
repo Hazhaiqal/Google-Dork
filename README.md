@@ -2,7 +2,6 @@
 
 ### Description
 An automation tool that enumerates the url given by user by utilizing Google Dork as enumeration tool 
-Adam Lahanat
 
 ### Available Dorks supported
 1.  site:url inurl:"login=" 
